@@ -1,0 +1,24 @@
+{
+  "name": "simplehexo",
+  "version": "1.0.0",
+  "description": "Simplenote to Hexo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tsuki/SimpleHexo.git"
+  },
+  "keywords": [
+    "Hexo",
+    "Simplenote",
+    "Markdown"
+  ],
+  "author": "Tsuki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tsuki/SimpleHexo/issues"
+  },
+  "homepage": "https://github.com/Tsuki/SimpleHexo#readme"
+}
