@@ -1,18 +1,17 @@
+const path = require('path');
 module.exports = {
-  entry: './src/index.js',
+  entry: path.resolve(__dirname, './src/index.js'),
   output: {
-    path: './build/',
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, './bin/'),
+    filename: 'simhex',
     publicPath: ''
   },
   module: {
     loaders: [
       {
-        test: /\.jsx?/,
-        loaders: [
-          'babel'
-        ],
-        include: './src/index.js',
+        test: /\.js.(x)?/,
+        loaders: 'babel-loader',
+        include: path.resolve(__dirname, './src/index.js'),
         query: {
           presets: [
             'es2015'
