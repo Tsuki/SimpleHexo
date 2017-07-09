@@ -1,15 +1,19 @@
 const path = require('path');
 module.exports = {
-  entry: path.resolve(__dirname, './src/index.js'),
+  devtool: "source-map",
+  entry: './src/index.js',
+  target: "node",
   output: {
-    path: path.resolve(__dirname, './bin/'),
-    filename: 'simhex',
-    publicPath: ''
+    path: path.join(__dirname, './bin/'),
+    filename: 'simhex.js',
+  },
+  stats: {
+    warnings: false
   },
   module: {
     loaders: [
       {
-        test: /\.js.(x)?/,
+        test: /\.js?/,
         loaders: 'babel-loader',
         include: path.resolve(__dirname, './src/index.js'),
         query: {
