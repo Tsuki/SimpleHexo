@@ -15,7 +15,6 @@ module.exports = {
       {
         test: /\.js?/,
         loaders: 'babel-loader',
-        include: path.resolve(__dirname, './src/index.js'),
         query: {
           presets: [
             'es2015'
