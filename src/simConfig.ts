@@ -18,10 +18,13 @@ export function read(): simConfig {
     }
 }
 
-export function write(config: simConfig): void {
+export function write(config?: simConfig): void {
     try {
-        let result = yaml.safeDump(filePath(), config);
-        fs.writeFile(filePath(), result);
+        if (config == null) {
+            config = new simConfig();
+        }
+        let result = yaml.safeDump(config);
+        fs.writeFileSync(filePath(), result);
     } catch (err) {
         console.log(err.stack || String(err));
     }
