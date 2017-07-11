@@ -1,19 +1,24 @@
 /**
  * Created by Tsuki on 7/10/17.
  */
-import debug = require("debug");
-import request = require('request-promise');
+import * as core from './core'
+import * as config from './simConfig'
+import * as debug from 'debug';
+import * as program from 'commander';
+debug.enable('main');
 const log: debug.IDebugger = debug('main');
-const appName: string = 'chalk-bump-f49';
-const token: string = process.env.SIMPERIUM_APP_SECRET;
-const options = {
-    method: 'GET',
-    url: `https://api.simperium.com/1/${appName}/note/index`,
-    qs: {data: '1'},
-    headers: {'x-simperium-token': token},
-    json: true
-};
 
-request(options).then(function (json) {
-    log(json.index)
-});
+program
+    .version('0.1.0')
+    .command('init')
+    .description('Initialize or update simhex config')
+    .action(() => {
+        log('ini');
+        if (config.configExists()) {
+            log('init yes')
+        } else {
+            log('init not')
+        }
+    });
+
+program.parse(process.argv);
