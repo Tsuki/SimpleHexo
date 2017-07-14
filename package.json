@@ -35,7 +35,8 @@
     "request": "2.81.0",
     "request-promise": "4.2.1",
     "ts-loader": "2.2.2",
-    "typescript": "2.4.1"
+    "typescript": "2.4.1",
+    "underscore": "1.8.3"
   },
   "devDependencies": {
     "@types/debug": "0.0.29",
