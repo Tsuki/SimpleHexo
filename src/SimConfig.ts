@@ -5,11 +5,17 @@ import * as fs from "fs";
 import * as path from "path";
 import * as os from "os";
 import * as yaml from "js-yaml";
+import {debug, info, warn, error} from './logger'
 
-export class simConfig {
+export class SimConfig {
+    public tag: string = '';
+    public hexoPath: string = '';
 
+    public constructor(init?: Partial<SimConfig>) {
+        Object.assign(this, init);
+    }
 }
-export function read(): simConfig {
+export function readConfig(): SimConfig {
     try {
         let contents = fs.readFileSync(filePath(), 'utf8');
         return yaml.safeLoad(contents);
@@ -18,12 +24,13 @@ export function read(): simConfig {
     }
 }
 
-export function write(config?: simConfig): void {
+export function writeConfig(config?: SimConfig): void {
     try {
         if (config == null) {
-            config = new simConfig();
+            config = new SimConfig();
         }
         let result = yaml.safeDump(config);
+        debug("config:%O", config);
         fs.writeFileSync(filePath(), result);
     } catch (err) {
         console.log(err.stack || String(err));
@@ -41,7 +48,7 @@ export function configExists(mode?: number): boolean {
 }
 
 function filePath(): string {
-    return path.join(getUserHome(), 'sample_document.yml');
+    return path.join(getUserHome(), '.simhexrc.yml');
 }
 
 function getUserHome() {
